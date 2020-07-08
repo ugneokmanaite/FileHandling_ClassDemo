@@ -12,10 +12,8 @@ class TextFileHandling:
     # reading the file
     # closing the file
     def read_text(self):
-        # open file
-        file = open(self.file_path, "r")
         # read file
-        self.text_storage = file.read()
+        # self.text_storage = file.read()
     #   self.text_storage = file.read(3) - #will print 3 first characters
     #     self.text_storage = file.readline() # will read first line from current position
         #self.text_storage = file.readline()
@@ -27,7 +25,7 @@ class TextFileHandling:
        #  self.text_storage = file.readline()
         # print(file.tell()) # the pointer is at the current position and will start reading from there
         # close file
-        file.close()
+        #file.close()
         return self.text_storage
 
     def write_text_file(self):
@@ -46,7 +44,6 @@ class TextFileHandling:
         print(file.mode)
         return self.text_storage
 
-
     def read_text_file_using_with(self):
         # to reduce the overhead of closing files
         # open the file and read it. No overhead of closing
@@ -62,3 +59,32 @@ class TextFileHandling:
             file.seek(0) # repositioning the pointer to the beginning
             self.text_storage = file.read()
             return self.text_storage
+
+    def playing_with_python_OS_module(self):
+        import os
+        print(os.getcwd()) # current working directory
+        # os.remove("writer.txt") # this will remove the file
+        # os.rmdir() # this will remove the folder
+        # print(os.listdir()) # listening files and directories
+        # os.rename('order.txt','modified.txt') #renaming
+        #os.chdir("C:/Users/Ugne/Desktop/Holiday pictures")
+        #print((os.getcwd()))
+        # os.mkdir("Ugne") # adding directory
+        # os.rmdir("Ugne") # removing directory
+        os.chdir("C:/Users/Ugne/PycharmProjects/FileHandling_ClassDemo/")
+        print((os.getcwd()))
+
+    def playing_with_exception(self):
+        try:
+            file = open(self.file_path, 'r')
+        except Exception as e:
+            print(e)
+            print("File is not present")
+        else:
+            self.text_storage = file.read()
+            file.close()
+        finally:
+            print("Will run for sure")
+            return self.text_storage
+
+
